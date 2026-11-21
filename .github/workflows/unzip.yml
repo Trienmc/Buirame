@@ -8,8 +8,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: |
-          unzip -o file.zip
-          rm file.zip
+          unzip -o CharacterCardGenerator-main.zip
+          rm CharacterCardGenerator-main.zip
       - run: |
           git config user.name "github-actions"
           git config user.email "github-actions@users.noreply.github.com"
