@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creador de Cartas de Personaje</title>
+    <!-- Google Fonts para un estilo de fantasía -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- html2canvas Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <!-- Tu archivo CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-1">
+
+    <div id="app-container" class="grid grid-cols-1 md:grid-cols-[350px_1fr] grid-rows-[auto_1fr_auto] h-screen">
+        
+        <header class="header flex items-center justify-between p-4 border-b col-span-1 md:col-span-2 primary-bg border-secondary">
+            <h1 class="text-2xl font-bold font-title text-color">Character Card Creator</h1>
+            <button id="menu-toggle" class="md:hidden p-2 rounded-md hover-bg">☰</button>
+        </header>
+
+        <aside id="sidebar" class="sidebar p-4 border-r overflow-y-auto primary-bg border-secondary">
+            <h2 class="text-xl font-semibold border-b pb-2 mb-4 font-title text-color border-secondary">Opciones del Personaje</h2>
+            
+            <div class="space-y-4">
+                <!-- Selector de Tema -->
+                <div>
+                    <label class="font-medium text-color">Tema de Color</label>
+                    <div id="theme-selector" class="flex flex-wrap gap-2 mt-2"></div>
+                </div>
+                
+                <div class="flex flex-col gap-1"><label for="char-name" class="text-color">Nombre</label><input type="text" id="char-name" class="form-input"></div>
+                <div class="flex flex-col gap-1"><label for="char-mote" class="text-color">Mote</label><input type="text" id="char-mote" class="form-input"></div>
+                <div class="flex flex-col gap-1"><label for="char-race" class="text-color">Raza</label><input type="text" id="char-race" class="form-input"></div>
+                <div class="flex flex-col gap-1"><label for="char-gender" class="text-color">Género</label><input type="text" id="char-gender" class="form-input"></div>
+                <div class="flex flex-col gap-1"><label for="char-desc" class="text-color">Descripción</label><textarea id="char-desc" class="form-input h-24"></textarea></div>
+                <div class="flex flex-col gap-1"><label for="char-likes" class="text-color">Gustos</label><textarea id="char-likes" class="form-input h-20"></textarea></div>
+                <div class="flex flex-col gap-1"><label for="char-dislikes" class="text-color">Disgustos</label><textarea id="char-dislikes" class="form-input h-20"></textarea></div>
+                
+                <button id="upload-image-btn" class="w-full p-2 mt-4 rounded-md font-bold btn-secondary">Subir Imagen</button>
+                <input type="file" id="image-input" class="hidden" accept="image/*">
+                
+                <div class="flex gap-4">
+                    <button id="save-data-btn" class="w-full p-2 mt-2 rounded-md font-bold btn-secondary">Guardar</button>
+                    <button id="download-btn" class="w-full p-2 mt-2 rounded-md font-bold btn-primary">Descargar</button>
+                </div>
+            </div>
+        </aside>
+
+        <main class="content p-4 md:p-8 overflow-y-auto flex items-center justify-center primary-bg">
+            <!-- La tarjeta del personaje se genera aquí -->
+            <div id="card-container" class="secondary-bg font-body text-color">
+                <div id="character-card" class="flex h-full">
+                    <!-- Columna Izquierda: Nombre, Mote, Imagen -->
+                    <div class="flex flex-col character-image">
+                        <div class="pb-2 pt-8 px-4 text-center">
+                            <h2 id="display-name" class="text-4xl font-bold font-title">Nombre del Personaje</h2>
+                            <p id="display-mote" class="text-lg italic opacity-80">Su mote va aquí</p>
+                        </div>
+                        <img id="display-image" src="https://via.placeholder.com/300x450" alt="Imagen del Personaje" class="object-contain">
+                    </div>
+                    <!-- Columna Derecha: Información -->
+                    <div class="p-8 flex flex-col gap-4 overflow-y-auto character-info">
+                        <div class="info-box"><h3 class="info-title">Raza</h3><p id="display-race"></p></div>
+                        <div class="info-box"><h3 class="info-title">Género</h3><p id="display-gender"></p></div>
+                        <div class="info-box"><h3 class="info-title">Descripción</h3><p id="display-desc" class="text-sm"></p></div>
+                        <div class="info-box"><h3 class="info-title">Gustos</h3><p id="display-likes" class="text-sm"></p></div>
+                        <div class="info-box"><h3 class="info-title">Disgustos</h3><p id="display-dislikes" class="text-sm"></p></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer class="footer p-4 text-center text-sm col-span-1 md:col-span-2 primary-bg border-t border-secondary">
+            <a href="https://github.com/FeithNoir" target="_blank" rel="noopener noreferrer" class="footer-link">Creado por FeithNoir</a>
+        </footer>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
